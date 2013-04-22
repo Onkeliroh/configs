@@ -1,0 +1,65 @@
+# Conky config file:
+alignment top_right
+background no
+#border_margin 100
+border_width 1
+cpu_avg_samples 2
+default_color black
+default_outline_color 555753
+default_shade_color white
+draw_borders no
+draw_graph_borders yes
+draw_outline no
+draw_shades no
+use_xft yes
+xftfont DejaVu Sans:size=8
+xftalpha 1
+text_buffer_size 1024
+gap_x 10
+gap_y 25
+minimum_size 250 5
+net_avg_samples 2
+no_buffers yes
+double_buffer yes
+out_to_console no
+out_to_stderr no
+extra_newline no
+own_window yes
+own_window_transparent yes
+own_window_class Conky
+own_window_type override
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+stippled_borders 0
+update_interval 2
+uppercase no
+use_spacer yes
+show_graph_scale no
+show_graph_range no
+
+TEXT
+#System: ------------
+${font xftfont:style=bold}SYSTEM${font} ${hr 2}
+#Kernel: ${alignr}${kernel}
+${alignc}Computer Uptime: ${uptime_short}
+CPU Ø: ${alignr}${cpu cpu0}% ${cpubar 8,100 cpu0}
+CPU 1: ${alignr}${cpu cpu1}% ${cpubar 8,100 cpu1}
+CPU 2: ${alignr}${cpu cpu2}% ${cpubar 8,100 cpu2}
+RAM: ${alignr}$memperc% ${membar 8,100}
+
+LoadAVG: ${alignr}${loadavg}
+
+Volume: ${ibm_volume}
+#HDD: -----------
+${font xftfont:style=bold}HDD${font} ${hr 2}
+Root: ${alignc}${fs_used /} / ${fs_size /}${alignr}${fs_used_perc /root}% 
+${alignr}${fs_bar 8,250 /root}
+
+#Netzwerk: --------
+${font xftfont:style=bold}NETZWERK${font} ${hr 2}
+WLAN: ${alignr}${wireless_essid wlp3s0}
+Up — ${upspeed wlp3s0} ${alignr}Down — ${downspeed wlp3s0}
+${upspeedgraph wlp3s0 20,112 07A1E 07A1E} ${alignr}${downspeedgraph wlp3s0 20,112 07A1E 07A1E}
+LAN:
+Up — ${upspeed enp0s25} ${alignr}Down — ${downspeed enp0s25}
+${upspeedgraph enp0s25 20,112 07A1E 07A1E} ${alignr}${downspeedgraph enp0s25 20,112 07A1E 07A1E}
+
