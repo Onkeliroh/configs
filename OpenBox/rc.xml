@@ -323,19 +323,21 @@
 			<action name = "Unmaximize"/>
 		</keybind>
 		<keybind key="W-Left">
+			<action name="UnmaximizeFull"/>
+      <action name="MaximizeVert"/>
 			<action name="MoveResizeTo">
 				<x>0</x>
 				<y>0</y>
 				<width>50%</width>
-				<height>100%</height>
 			</action>
 		</keybind>
 		<keybind key="W-Right">
+			<action name="UnmaximizeFull"/>
+      <action name="MaximizeVert"/>
 			<action name="MoveResizeTo">
 				<x>50%</x>
 				<y>0</y>
 				<width>50%</width>
-				<height>100%</height>
 			</action>
 		</keybind>
 		<keybind key="W-s">
