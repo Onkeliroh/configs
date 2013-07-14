@@ -16,7 +16,7 @@ xftfont DejaVu Sans:size=8
 xftalpha 1
 text_buffer_size 1024
 gap_x 10
-gap_y 30
+gap_y 40
 minimum_size 250 5
 net_avg_samples 2
 no_buffers yes
@@ -26,12 +26,12 @@ out_to_stderr no
 extra_newline no
 own_window yes
 own_window_type desktop
-#own_window_transparent yes
+own_window_transparent yes
 own_window_class Conky
 #own_window_type override
 own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 own_window_argb_visual yes
-own_window_argb_value 100
+#own_window_argb_value 100
 double_buffer yes
 stippled_borders 0
 update_interval 2
@@ -58,6 +58,11 @@ LoadAVG: ${alignr}${loadavg}
 ${font xftfont:style=bold}HDD${font} ${hr 2}
 Root: ${alignc}${fs_used /} / ${fs_size /}${alignr}${fs_used_perc /root}% 
 ${alignr}${fs_bar 8,250 /root}
+Elements: ${alignc}${fs_used /mnt/Elements} / ${fs_size /mnt/Elements}${alignr}${fs_used_perc /mnt/Elements}% 
+${alignr}${fs_bar 8,250 /mnt/Elements}
+Music: ${alignc}${fs_used /mnt/Musik} / ${fs_size /mnt/Musik}${alignr}${fs_used_perc /mnt/Musik}% 
+${alignr}${fs_bar 8,250 /mnt/Musik}
+
 
 #Network: --------
 ${font xftfont:style=bold}NETWORK${font} ${hr 2}
