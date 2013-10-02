@@ -176,19 +176,23 @@ mpdwidget = wibox.widget.textbox()
 -- Register widget
 vicious.register(mpdwidget, vicious.widgets.mpd,
   function (mpdwidget, args)
-    if args["{state}"] == "Stop" then 
-      return '<span background="#92B0A0" font="Inconsolata 11"> <span font ="Inconsolata 11" color="#FFFFFF">Stopped </span></span>'
-		elseif args["{state}"] == "Pause" then 
-      return '<span background="#92B0A0" font="Inconsolata 11"> <span font ="Inconsolata 11" color="#FFFFFF">Paused </span></span>'
-    else 
-      return '<span background="#92B0A0" font="Inconsolata 11"> <span font ="Inconsolata 11" color="#FFFFFF">' ..args["{Artist}"]..' - '.. string.sub(args["{Title}"],1,20)..'</span></span>'
+    if args["{state}"] == "Stop" then
+      str = 'Stopped'
+	elseif args["{state}"] == "Pause" then
+      str = 'Paused'
+    else
+      str = args["{Artist}"]..' - '..string.sub(args["{Title}"],1,20)     
     end
+    return '<span background="#92B0A0" font="Inconsolata 11"> <span font ="Inconsolata 11" color="#FFFFFF">' .. args["{volume}"] .. "|".. str .. '</span></span>'  
   end, update_time/30)
 
-mpdwidget:buttons(awful.util.table.join(awful.button({ }, 1,
-	function()
-		os.execute('mpc toggle')
-	end )))
+mpdwidget:buttons(awful.util.table.join(
+	awful.button({ }, 1,function() os.execute('mpc toggle')end ),
+	awful.button({ }, 9,function() os.execute('mpc next')end), --next
+	awful.button({ }, 8,function() os.execute('mpc prev')end), --prev
+	awful.button({ }, 4,function() os.execute('mpc volume +1')end),
+	awful.button({ }, 5,function() os.execute('mpc volume -1')end)
+	))
 
 
 --{{ Battery Widget }} --
@@ -225,7 +229,7 @@ vicious.register(volumeicon, vicious.widgets.volume, function(widget, args)
     else
         volumeicon:set_image(beautiful.vollow)
     end
-end, 0.3, "Master")
+end, update_time/60, "Master")
 
 volume:buttons(awful.util.table.join(
 	awful.button({ }, 1,	function() os.execute("amixer set Master toggle")end ),
