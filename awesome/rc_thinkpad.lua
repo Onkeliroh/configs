@@ -140,7 +140,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
 --{{-- Time and Date Widget }} --
 tdwidget = wibox.widget.textbox()
-local strf = '<span font="' .. font .. '" color="#EEEEEE" background="#777E76">%b %d %I:%M</span>'
+local strf = '<span font="' .. font .. '" color="#EEEEEE" background="#777E76">%b %d %H:%M</span>'
 vicious.register(tdwidget, vicious.widgets.date, strf, update_time/2)
 
 clockicon = wibox.widget.imagebox()
@@ -156,6 +156,7 @@ vicious.register(netwidget, vicious.widgets.net, function(widget, args)
         return ""
     end
     return '<span background="#C2C2A4" font="Inconsolata 11"> <span font ="Inconsolata 11" color="#FFFFFF">'..args["{"..interface.." down_kb}"]..'kbps'..'</span></span>' end, update_time/3)
+
 
 ---{{---| Wifi Signal Widget |-------
 neticon = wibox.widget.imagebox()
