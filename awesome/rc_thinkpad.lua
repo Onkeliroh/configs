@@ -150,8 +150,8 @@ clockicon:set_image(beautiful.clock)
 netwidget = wibox.widget.textbox()
 vicious.register(netwidget, vicious.widgets.net, function(widget, args)
     local interface = ""
-    if args["{wlan0 carrier}"] == 1 then
-        interface = "wlan0"
+    if args["{wlp3s0 carrier}"] == 1 then
+        interface = "wlp3s0"
     else
         return ""
     end
@@ -168,7 +168,7 @@ vicious.register(neticon, vicious.widgets.wifi, function(widget, args)
     else
         neticon:set_image(beautiful.netlow)
     end
-end, update_time/3, 'wlan0')
+end, update_time/3, 'wlp3s0')
 
 ---{{ MPD Widget }} --
 -- Initialize widget
@@ -200,7 +200,9 @@ baticon = wibox.widget.imagebox()
 baticon:set_image(beautiful.baticon)
 
 batwidget = wibox.widget.textbox()
-vicious.register( batwidget, vicious.widgets.bat, '<span background="#92B0A0" font="Inconsolata 11"><span font="Inconsolata 11" color="#FFFFFF" background="#92B0A0">$1$2% </span></span>', update_time, "BAT1" )
+--bat_value = (io.open('cat /sys/class/power_supply_BAT0/capacity'))
+--batwidget.text = '<span background="#92B0A0" font="Inconsolata 11"><span font="Inconsolata 11" color="#FFFFFF" background="#92B0A0">bat_value</span></span>'
+vicious.register( batwidget, vicious.widgets.bat, '<span background="#92B0A0" font="Inconsolata 11"><span font="Inconsolata 11" color="#FFFFFF" background="#92B0A0">$2% </span></span>', update_time, "BAT0" )
 
 
 --{{---| File Size widget |-----
@@ -365,6 +367,7 @@ for s = 1, screen.count() do
 --    right_layout:add(fswidget)
     right_layout:add(arr4)
     right_layout:add(baticon)
+		right_layout:add(batwidget)
 --    right_layout:add(mpdwidget)
     right_layout:add(arr3)
     right_layout:add(neticon)
@@ -666,6 +669,8 @@ end
 -- on startup
 --run_once(browser)
 --run_once(xchat)
+run_once("xrdb -merge ~/.Xresources")
+run_once("xset r rate 250 30")
 
 -- {{ I need redshift to save my eyes }} -
 run_once("redshift -l 49.26:-123.23")
