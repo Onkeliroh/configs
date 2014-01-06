@@ -1,7 +1,11 @@
 set bg=dark
 set ts=2
 set sw=2
+set tw=80
+set cc=80
 set number
+
+set encoding=utf-8
 
 set ignorecase
 set ruler
@@ -12,5 +16,5 @@ filetype indent on
 
 set hlsearch
 set incsearch
-
+set mouse=a
 
