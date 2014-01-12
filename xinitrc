@@ -1,7 +1,7 @@
-[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+[[ -f /home/onkeliroh/.Xresources ]] && xrdb -merge /home/onkeliroh/.Xresources
 xset r rate 250 30
 
 #ssh
 #exec ssh-agent /bin/zsh
 
-wmname LG3D
+#wmname LG3D
