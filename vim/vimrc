@@ -1,6 +1,6 @@
 set bg=dark
-set ts=2
-set sw=2
+set ts=4
+set sw=4
 set tw=80
 set cc=80
 set number
@@ -18,3 +18,4 @@ set hlsearch
 set incsearch
 set mouse=a
 
+execute pathogen#infect()

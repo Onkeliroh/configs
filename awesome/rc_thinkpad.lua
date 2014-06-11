@@ -115,11 +115,12 @@ myseperator = wibox.widget.textbox()
 myseperator:set_text("|")
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
-
 -- Battery widget
 batwidget = wibox.widget.textbox()
 vicious.register( batwidget, vicious.widgets.bat, '$1$2%', 30, "BAT0" )
-
+-- Network widget
+netwidget = wibox.widget.textbox()
+vicious.register( netwidget, vicious.widgets.wifi, "${ssid} ${linp}%", 5, "wlp3s0" ) 
 -- Create a wibox for each screen and add it
 mywibox = {}
 mypromptbox = {}
@@ -199,6 +200,8 @@ for s = 1, screen.count() do
     if s == 1 then right_layout:add(wibox.widget.systray()) end
 		right_layout:add(myseperator)
 		right_layout:add(batwidget)
+		right_layout:add(myseperator)
+		right_layout:add(netwidget)
 		right_layout:add(myseperator)
     right_layout:add(mytextclock)
 		right_layout:add(myseperator)
