@@ -1,6 +1,6 @@
 set bg=dark
-set ts=2
-set sw=2
+set ts=4
+set sw=4
 set tw=80
 set cc=80
 set number
@@ -18,3 +18,10 @@ filetype indent on
 set hlsearch
 set incsearch
 set mouse=a
+
+set foldmethod=indent   "fold based on indent
+set foldnestmax=10      "deepest fold is 10 levels
+set nofoldenable        "dont fold by default
+set foldlevel=2         "this is just what i use
+
+execute pathogen#infect()
